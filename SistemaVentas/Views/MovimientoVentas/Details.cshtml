@@ -1,42 +1,49 @@
 ﻿@model SistemaVentas.Models.MovimientoVenta
-
+@using SistemaVentas.Models
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles de la Venta";
 }
 
-<h1>Details</h1>
+<div class="container mt-5">
+    <h2 class="mb-4">Detalles de la Venta</h2>
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Información de la Venta</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Fecha de Venta:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.FechaVenta)</dd>
 
-<div>
-    <h4>MovimientoVenta</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaVenta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaVenta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalVenta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalVenta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Detalle)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Detalle)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdClienteNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdClienteNavigation.IdCliente)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdVenta">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                <dt class="col-sm-3">Total de Venta:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.TotalVenta)</dd>
+
+                <dt class="col-sm-3">Detalles:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Detalle)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header bg-secondary text-white">
+            <h4 class="mb-0">Información del Cliente</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">ID del Cliente:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.IdClienteNavigation.IdCliente)</dd>
+
+                <dt class="col-sm-3">Nombre del Cliente:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.IdClienteNavigation.Nombre)</dd>
+
+                <dt class="col-sm-3">Número de Contacto:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.IdClienteNavigation.Telefono)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Edit" asp-route-id="@Model?.IdVenta" class="btn btn-warning">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+    </div>
 </div>

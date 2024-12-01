@@ -4,50 +4,52 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="text-center">Create</h1>
 
-<h4>Inventario</h4>
+<h4 class="text-center">Inventario</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form asp-action="Create" class="table-bordered table-striped">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="IdProducto" class="control-label"></label>
-                <input asp-for="IdProducto" class="form-control" />
+                <input asp-for="IdProducto" class="form-control table-primary" />
                 <span asp-validation-for="IdProducto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CantidadDisponible" class="control-label"></label>
-                <input asp-for="CantidadDisponible" class="form-control" />
+                <input asp-for="CantidadDisponible" class="form-control table-primary" />
                 <span asp-validation-for="CantidadDisponible" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PrecioCompra" class="control-label"></label>
-                <input asp-for="PrecioCompra" class="form-control" />
+                <input asp-for="PrecioCompra" class="form-control table-primary" />
                 <span asp-validation-for="PrecioCompra" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PrecioVenta" class="control-label"></label>
-                <input asp-for="PrecioVenta" class="form-control" />
+                <input asp-for="PrecioVenta" class="form-control table-primary" />
                 <span asp-validation-for="PrecioVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaUltimaActualizacion" class="control-label"></label>
-                <input asp-for="FechaUltimaActualizacion" class="form-control" />
+                <input asp-for="FechaUltimaActualizacion" class="form-control table-primary" />
                 <span asp-validation-for="FechaUltimaActualizacion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver a la lista</a>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

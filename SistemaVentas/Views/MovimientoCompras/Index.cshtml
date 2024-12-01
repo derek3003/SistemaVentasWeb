@@ -1,53 +1,42 @@
 ﻿@model IEnumerable<SistemaVentas.Models.MovimientoCompra>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Listado de Compras";
 }
 
-<h1>Index</h1>
+<div class="container mt-5">
+    <h1 class="text-primary">@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCompra)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalCompra)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Detalle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdProveedorNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCompra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalCompra)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Detalle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProveedorNavigation.IdProveedor)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCompra">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCompra">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCompra">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-action="Create" class="btn btn-success">Crear Nueva Compra</a>
+    </p>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.FechaCompra)</th>
+                <th>@Html.DisplayNameFor(model => model.TotalCompra)</th>
+                <th>@Html.DisplayNameFor(model => model.Detalle)</th>
+                <th>@Html.DisplayNameFor(model => model.IdProveedorNavigation)</th>
+                <th class="text-center">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.FechaCompra)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TotalCompra)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Detalle)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdProveedorNavigation.IdProveedor)</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.IdCompra" class="btn btn-warning btn-sm">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdCompra" class="btn btn-info btn-sm">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdCompra" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
